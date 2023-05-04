@@ -1,0 +1,384 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <!-- stylecss -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+
+
+    .photo {
+        width: 100%;
+    }
+{% for i in card %}
+    
+.banner2-{{i.id}} {
+    background-image: url("{{i.image.url}}");
+    background-position: center;
+    background-attachment: fixed;
+    padding: 48px 0 93px;
+}
+{% endfor %}
+
+{% for i in cardtwo %}
+    
+.banner3-{{i.id}} {
+    background-image: url("{{i.image.url}}");
+    background-position: center;
+    background-attachment: fixed;
+    padding: 48px 0 93px;
+}
+{% endfor %}
+
+{% for i in latesnews %}
+
+.image-{{i.id}} {
+    background-image: url("{{i.news_img.url}}");
+    background-position: center;
+    height: 400px;
+    width: 100%;
+    background-repeat: no-repeat;
+    padding: 5rem;
+  }
+  {% endfor %}
+
+ 
+    </style>
+</head>
+
+<body>
+    
+    {% for i in company  %}
+        
+    <header id="header">
+        {% endfor %}
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand text-white" href="#header">LOGO <i class="fa-solid fa-video"></i></a>
+                
+                {% for i in company %}
+                <span class="text-white">{{i.company_name}}</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="#header">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#news">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#team">Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#contact_us">Contacs</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-6 d-flex flex-column align-items-center mt-5">
+                    <h1 class="text-white text-center" style="font-size: 90px;">{{i.company_head}}</h1> 
+                    <h4 class="text-white text-center mt-4">{{i.company_name}}</h4>                        
+                    <h6 class="text-white text-center fw-light mt-4">{{i.company_subtitle}}</h6>
+                    {% endfor %}    
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 d-flex justify-content-center">
+                    <i class="fa-brands fa-facebook text-white" style="font-size: 60px;"></i>
+                    <i class="fa-brands fa-twitter text-white ms-4 me-4" style="font-size: 60px;"></i>
+                    <i class="fa-brands fa-instagram text-white" style="font-size: 60px;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="welcome mt-5">
+        <div class="container">
+            <div class="row">
+                <h2 class="fw-bold text-center" style="font-size: 50px;">Welcome</h2> 
+                {% for i in welcome_text %}
+                <div class="col-md-4 d-flex justify-content-center  mt-5 ">
+                    <div class="photo d-flex flex-column align-items-center">
+                        {% if i.text_card_img %}
+                        <img src="{{ i.text_card_img.url }}" alt="" style="width: 80%;">                    
+                        {% endif %}           
+                        <div class="text">
+                            <p class="text-center mt-2 fw-lighter">
+                                {{i.text|linebreaksbr}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% for i in card  %}
+    <section class="banner2-{{i.id}} mt-5" style="padding-bottom: 10rem">
+        <div class="container mt-5">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-6 d-flex flex-column align-items-center mt-5">
+                        <h1 class="text-white text-center" style="font-size: 90px;">{{i.text_head|linebreaksbr}}</h1>
+                        <h6 class="text-white text-center fw-light mt-4">
+                            {{i.text|linebreaksbr}}
+                        </h6>
+                        {% endfor %}
+                        <a class="read-more-button mt-4" href="">Read</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <section class="wrapper" style="margin-top: 5rem; margin-bottom: 10rem;" id="about">
+        <div class="container">
+            <div class="row"> 
+                
+                {% for i in detail_card %}
+                    
+                                  
+                <div class="col-md-4 d-flex flex-column align-items-center mt-5">
+                    <i class="{{i.detail_card_icon}}" style="font-size: 60px; color: gainsboro;"></i>
+                    <a href="" class="d-flex flex-column align-items-center mt-4">
+                        <h2>{{i.detail_title}}</h2>
+                        <h5>{{i.detail_title_card}}</h5>
+                        <p class="text-center fw-light">
+                            {{i.detail_text|linebreaksbr}}
+                        </p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% for i in cardtwo  %}
+    <section class="banner3-{{i.id}} mt-5" style="padding-bottom: 10rem">
+        <div class="container mt-5">
+            <div class="row d-flex justify-content-center align-items-center">
+                
+                    
+                
+                <div class="col-6 d-flex flex-column align-items-center mt-5 ps-3 pe-3">
+                    <h1 class="text-white text-center" style="font-size: 60px;">{{i.text_head|linebreaksbr}}</h1>
+                    <h6 class="text-white text-center fw-light mt-4">
+                        {{i.text|linebreaksbr}}
+                    </h6>
+                    <a class="read-more-button mt-4" href="">Read</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="wrapper3 mt-5" id="news">
+        <div class="container">
+            <div class="row">
+                <h2 class="fw-bold text-center" style="font-size: 50px;">Latest news</h2>
+                
+                {% for i in latesnews  %}
+                <div class="col-12 d-flex justify-content-center mt-2 ">
+                    <div class="photo d-flex flex-column align-items-center justify-content-end">
+                        <div class="image-{{i.id}} d-flex flex-column justify-content-end align-items-center">
+                            <div class="text d-flex flex-column justify-content-center align-items-center">
+                                <a href="#" class="text-center text-white mt-2 fw-lighter m-0" style="font-size: 20px;">
+                                {{i.news_img_text|linebreaksbr}}
+                                </a>
+                                <p class="text-white mt-1 pt-2" style="border-top: 1px solid white;">
+                                    {{i.news_date}}
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-center ps-4 pe-4 pt-3">
+                            {{i.news_text}}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+                <a class="read-more-button m-auto" href="">See All</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="team mt-5" id="team">
+        <div class="container">
+            <div class="row">
+                <h2 class="fw-bold text-center text-white" style="font-size: 50px;">Team</h2>
+                
+                {% for i in team  %}
+
+                <div class="col-md-4 d-flex flex-column align-items-center justify-content-center mt-4">
+                    <div class="team_photo">
+                        <img src="{{i.team_img.url}}" alt="">
+                    </div>
+                    <h4 class="mt-3 text-center text-white">
+                        {{i.team_name}}
+                    </h4>
+                    <p class="mt-3 text-center text-white">
+                        {{i.team_comment}}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </section>
+    
+    <a class="btn btn-info rounded-5 d-flex justify-content-center align-items-center" href="#header" style="width: 50px; height: 50px; position: fixed; bottom: 50px; right: 50px; z-index: 99;">
+        <i class="fa-solid fa-arrow-up fa-fade text-white"></i>
+    </a>
+
+    <footer class="contact-us mt-5" id="contact_us">
+        <div class="container">
+            <div class="row">
+                <h2 class="fw-bold text-center" style="font-size: 50px;">Contact-Us</h2>
+                <div class="col-md-12">
+                    <iframe class="mt-5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3012.0867521818473!2d28.872312075774104!3d40.97958117135454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabd361d9f2bcd%3A0x109cda61c48e4b76!2sNeos%20Yaz%C4%B1l%C4%B1m%20Akademi!5e0!3m2!1str!2str!4v1683038303144!5m2!1str!2str" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="container-fluid footer-bottom-container bg-darks text-light py-5">
+                <div class="container pt-5" data-aos="fade-up" data-aos-offset="300" data-aos-duration="2000">
+                    <div class="row pt-4">
+                        <div class="col-lg-3 col-md-6">
+                            <h3 class="mb-4">
+                                Quick Links
+                            </h3>
+                            <div class="d-flex flex-column justify-content-start">
+                                <a class="text-light mb-2" href="">
+                                    <i class="fa-solid fa-arrow-right text-primary me-2"></i>
+                                    Home
+                                </a>
+                                <a class="text-light mb-2" href="">
+                                    <i class="fa-solid fa-arrow-right text-primary me-2"></i>
+                                    About Us
+                                </a>
+                                <a class="text-light mb-2" href="">
+                                    <i class="fa-solid fa-arrow-right text-primary me-2"></i>
+                                    Our Services
+                                </a>
+                                <a class="text-light mb-2" href="">
+                                    <i class="fa-solid fa-arrow-right text-primary me-2"></i>
+                                    Latest Blog
+                                </a>
+                                <a class="text-light mb-2" href="">
+                                    <i class="fa-solid fa-arrow-right text-primary me-2"></i>
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <h3 class="white mb-4">
+                                Populer Links
+                            </h3>
+                            <div class="d-flex flex-column justify-content-start">
+                                <a class="text-light mb-2" href="">
+                                    <i class="fa-solid fa-arrow-right text-primary me-2"></i>
+                                    Home
+                                </a>
+                                <a class="text-light mb-2" href="">
+                                    <i class="fa-solid fa-arrow-right text-primary me-2"></i>
+                                    About Us
+                                </a>
+                                <a class="text-light mb-2" href="">
+                                    <i class="fa-solid fa-arrow-right text-primary me-2"></i>
+                                    Our Services
+                                </a>
+                                <a class="text-light mb-2" href="">
+                                    <i class="fa-solid fa-arrow-right text-primary me-2"></i>
+                                    Latest Blog
+                                </a>
+                                <a class="text-light mb-2" href="">
+                                    <i class="fa-solid fa-arrow-right text-primary me-2"></i>
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <h3 class="white mb-4">
+                                Get In Touch
+                            </h3>
+                            <div class="d-flex flex-column justify-content-start">
+                                <p class="mb-2">
+                                    <i class="fa-solid fa-location-dot text-primary me-2"></i>
+                                    123 Street, New York, USA
+                                </p>
+                                <p class="mb-2">
+                                    <i class="fa-regular fa-envelope-open text-primary me-2"></i>
+                                    info@example.com
+                                </p>
+                                <p class="mb-2">
+                                    <i class="fa-solid fa-phone text-primary me-2"></i>
+                                    +012 345 67890
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <h3 class="white mb-4">
+                                Follow Us
+                            </h3>
+                            <div class="d-flex">
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://www.linkedin.com/company/neos-yaz%C4%B1l%C4%B1m/mycompany/">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://www.instagram.com/neos_yazilim/">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://www.facebook.com/neosyazilimakademi/">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://www.youtube.com/channel/UCqK3l-AUa3KgG8WvqDeln1g">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://api.whatsapp.com/send/?phone=905013205358&text&type=phone_number&app_absent=0">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+
+
+
+
+
+
+
+    <!-- bs js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- app js -->
+    <script src="{% static 'app.js' %}"></script>
+</body>
+
+</html>
